@@ -1,10 +1,9 @@
 "use client";
-import { useState } from "react";
 import { Cormorant, Montserrat } from "next/font/google";
-import IntroVideo from "@/components/landing3/IntroVideo";
 import Enter from "@/components/landing3/Enter";
 import Header from "@/components/landing3/Header";
 import Hero from "@/components/landing3/Hero";
+import StaticBackground from "@/components/landing3/StaticBackground";
 
 // Premium luxury font pairing
 const cormorant = Cormorant({
@@ -22,23 +21,18 @@ const montserrat = Montserrat({
 });
 
 export default function Landing3Page() {
-    const [ready, setReady] = useState(false);
-
     return (
         <div
-            className={`landing3 h-screen overflow-hidden bg-[rgb(var(--bg))] text-[rgb(var(--text))] antialiased ${cormorant.variable} ${montserrat.variable} selection:bg-[rgb(var(--accent))]/20 selection:text-[rgb(var(--text))]`}
+            className={`landing3 min-h-screen bg-[rgb(var(--bg))] text-[rgb(var(--text))] antialiased ${cormorant.variable} ${montserrat.variable} selection:bg-[rgb(var(--accent))]/20 selection:text-[rgb(var(--text))]`}
             style={{ fontFamily: 'var(--font-montserrat), system-ui, sans-serif' }}
         >
             {/* Single viewport - scrollable on mobile if content exceeds */}
             <section className="relative min-h-screen overflow-y-auto overflow-x-hidden">
-                {/* IntroVideo: plays on load, then becomes static background */}
-                <IntroVideo onReady={() => setReady(true)} />
+                {/* Static background image */}
+                <StaticBackground />
 
-                {/* Hero content: fades in when intro is ready */}
-                <div
-                    className={`relative z-10 min-h-screen flex flex-col transition-opacity duration-500 ${ready ? "opacity-100" : "opacity-0 pointer-events-none"
-                        }`}
-                >
+                {/* Hero content */}
+                <div className="relative z-10 min-h-screen flex flex-col">
                     <Enter>
                         <div className="max-w-6xl mx-auto px-6 flex-1 flex flex-col">
                             <Header />
