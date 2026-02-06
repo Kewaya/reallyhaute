@@ -32,7 +32,8 @@ yarn-error.log*
 # Google credentials - NEVER COMMIT THESE
 service-account-key.json
 *-credentials.json
-*.json
+google-credentials.json
+gcp-credentials.json
 
 # vercel
 .vercel
