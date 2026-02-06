@@ -532,40 +532,31 @@
    LANDING 3 TOKENS (Scoped) - Luxury Soft
    ======================================== */
 .landing3 {
-  /* Warm ivory base - easier on eyes than pure white */
+  /* Colors only - themeable */
   --bg: 250 249 247;
   --bg-subtle: 245 243 240;
 
-  /* Warm text tones instead of pure black */
   --text: 28 25 23;
-  --muted: 120 113 108;
+  --text-muted: 120 113 108;
 
-  /* Soft borders with warm undertone */
   --border: 235 230 225;
   --border-soft: 240 238 235;
 
-  /* Card with subtle warmth */
   --card: 255 254 252;
   --card-elevated: 255 255 255;
 
-  /* Premium gold accent (from design system) */
   --accent: 176 141 87;
   --accent-dark: 139 105 51;
   --accent-light: 212 184 150;
 
-  /* Deep wine for contrast elements */
   --accent2: 74 31 44;
 
-  /* Generous radius for luxury feel */
+  /* Keep radius for landing3 specific theming */
   --radius: 20px;
   --radius-sm: 12px;
   --radius-lg: 28px;
 
-  /* Premium shadows */
-  --shadow-soft: 0 2px 20px rgba(28, 25, 23, 0.04);
-  --shadow-medium: 0 8px 30px rgba(28, 25, 23, 0.06);
-  --shadow-card: 0 4px 24px rgba(28, 25, 23, 0.05);
-  --shadow-elevated: 0 12px 40px rgba(28, 25, 23, 0.08);
+  /* Typography, spacing, and shadows are now in Tailwind config */
 }
 
 /* ========================================

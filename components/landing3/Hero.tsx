@@ -34,12 +34,12 @@ export default function Hero() {
     }
 
     return (
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start py-16 md:py-20 lg:py-24">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start py-20 md:py-24 lg:py-32 max-w-content mx-auto px-6">
             {/* Left Column */}
             <div className="flex flex-col gap-6 md:gap-8">
                 <motion.div variants={fadeUp()}>
                     <h1
-                        className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] leading-[1.1] tracking-[-0.02em] font-medium text-balance text-white drop-shadow-lg"
+                        className="text-display font-medium text-balance text-white drop-shadow-lg"
                         style={{ fontFamily: 'var(--font-cormorant), Georgia, serif' }}
                     >
                         Luxury pieces.{' '}
@@ -52,10 +52,10 @@ export default function Hero() {
 
                 <motion.p
                     variants={fadeUp()}
-                    className="text-base md:text-lg leading-[1.7] text-white/80 max-w-md drop-shadow-md"
+                    className="text-body-hero max-w-prose text-white/90 drop-shadow-md"
                 >
                     ReallyHaute is a curated marketplace for premium fashion—
-                    <span className="text-white font-medium"> authenticated listings, fair pricing, and fast buying</span> without the chaos.
+                    <span className="text-white font-medium">authenticated listings, fair pricing, and fast buying</span> without the chaos.
                 </motion.p>
 
                 <motion.div variants={fadeUp()} className="flex flex-col gap-4">
@@ -77,7 +77,7 @@ export default function Hero() {
                         { icon: Sparkles, label: "Curated drops" },
                         { icon: CheckCircle2, label: "Buyer protection" },
                     ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-2.5 text-sm text-white/70">
+                        <div key={i} className="flex items-center gap-2.5 text-body-sm text-white/80">
                             <item.icon className="w-4 h-4 text-[rgb(var(--accent))]" />
                             <span>{item.label}</span>
                         </div>
@@ -91,8 +91,7 @@ export default function Hero() {
                 className="relative"
             >
                 <div
-                    className="bg-[rgb(var(--card))] rounded-[var(--radius-lg)] p-6 md:p-8 relative z-10 overflow-hidden"
-                    style={{ boxShadow: 'var(--shadow-elevated)' }}
+                    className="bg-[rgb(var(--card))] rounded-[var(--radius-lg)] p-8 md:p-10 relative z-10 overflow-hidden shadow-elevated"
                 >
                     {/* Soft gradient overlay */}
                     <div className="absolute top-0 right-0 w-48 h-48 bg-[rgb(var(--accent))] opacity-[0.04] blur-[80px] rounded-full -mr-16 -mt-16"></div>
@@ -113,7 +112,7 @@ export default function Hero() {
                                 value={formData.name}
                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                 required
-                                className="w-full px-4 py-3 bg-[rgb(var(--bg-subtle))] border border-[rgb(var(--border))] rounded-[var(--radius-sm)] text-[rgb(var(--text))] placeholder:text-[rgb(var(--muted))] focus:outline-none focus:border-[rgb(var(--accent))] transition-colors"
+                                className="w-full px-4 py-4 text-body bg-[rgb(var(--bg-subtle))] border border-[rgb(var(--border))] rounded-xl text-[rgb(var(--text))] placeholder:text-[rgb(var(--text-muted))] focus:outline-none focus:border-[rgb(var(--accent))] focus:ring-2 focus:ring-[rgb(var(--accent))]/10 transition-all"
                             />
 
                             <input
@@ -122,7 +121,7 @@ export default function Hero() {
                                 value={formData.email}
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                 required
-                                className="w-full px-4 py-3 bg-[rgb(var(--bg-subtle))] border border-[rgb(var(--border))] rounded-[var(--radius-sm)] text-[rgb(var(--text))] placeholder:text-[rgb(var(--muted))] focus:outline-none focus:border-[rgb(var(--accent))] transition-colors"
+                                className="w-full px-4 py-4 text-body bg-[rgb(var(--bg-subtle))] border border-[rgb(var(--border))] rounded-xl text-[rgb(var(--text))] placeholder:text-[rgb(var(--text-muted))] focus:outline-none focus:border-[rgb(var(--accent))] focus:ring-2 focus:ring-[rgb(var(--accent))]/10 transition-all"
                             />
 
                             <input
@@ -131,7 +130,7 @@ export default function Hero() {
                                 value={formData.phone}
                                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                 required
-                                className="w-full px-4 py-3 bg-[rgb(var(--bg-subtle))] border border-[rgb(var(--border))] rounded-[var(--radius-sm)] text-[rgb(var(--text))] placeholder:text-[rgb(var(--muted))] focus:outline-none focus:border-[rgb(var(--accent))] transition-colors"
+                                className="w-full px-4 py-4 text-body bg-[rgb(var(--bg-subtle))] border border-[rgb(var(--border))] rounded-xl text-[rgb(var(--text))] placeholder:text-[rgb(var(--text-muted))] focus:outline-none focus:border-[rgb(var(--accent))] focus:ring-2 focus:ring-[rgb(var(--accent))]/10 transition-all"
                             />
 
                             <div className="flex gap-2">
@@ -145,9 +144,9 @@ export default function Hero() {
                                             onChange={(e) => setFormData({ ...formData, role: e.target.value })}
                                             className="sr-only"
                                         />
-                                        <div className={`px-3 py-2 text-center text-sm rounded-[var(--radius-sm)] transition-all ${formData.role === role
-                                            ? 'bg-[rgb(var(--accent))] text-white'
-                                            : 'bg-[rgb(var(--bg-subtle))] text-[rgb(var(--text))] border border-[rgb(var(--border))]'
+                                        <div className={`px-3 py-2.5 text-center text-body-sm rounded-xl transition-all cursor-pointer ${formData.role === role
+                                                ? 'bg-[rgb(var(--accent))] text-white'
+                                                : 'bg-[rgb(var(--bg-subtle))] text-[rgb(var(--text))] border border-[rgb(var(--border))]'
                                             }`}>
                                             {role.charAt(0).toUpperCase() + role.slice(1)}
                                         </div>
@@ -158,7 +157,7 @@ export default function Hero() {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full px-6 py-3.5 text-base font-medium bg-[rgb(var(--accent))] text-white rounded-[var(--radius-sm)] hover:bg-[rgb(var(--accent-dark))] transition-all duration-300 disabled:opacity-50 cursor-pointer shadow-[0_4px_20px_rgba(176,141,87,0.25)]"
+                                className="w-full px-8 py-4 text-button font-medium bg-[rgb(var(--accent))] text-white rounded-xl border border-[rgb(var(--accent-dark))]/20 hover:bg-[rgb(var(--accent-dark))] hover:shadow-cta-hover hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-50 cursor-pointer shadow-cta"
                             >
                                 {isSubmitting ? 'Joining...' : 'Join waitlist →'}
                             </button>
