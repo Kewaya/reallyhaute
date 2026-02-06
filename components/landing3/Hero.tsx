@@ -34,7 +34,7 @@ export default function Hero() {
     }
 
     return (
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start py-20 md:py-24 lg:py-32 max-w-content mx-auto px-6">
+        <div className="block md:grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start py-12 md:py-24 lg:py-32 max-w-content mx-auto w-full px-6">
             {/* Left Column */}
             <div className="flex flex-col gap-6 md:gap-8">
                 <motion.div variants={fadeUp()}>
@@ -145,8 +145,8 @@ export default function Hero() {
                                             className="sr-only"
                                         />
                                         <div className={`px-3 py-2.5 text-center text-body-sm rounded-xl transition-all cursor-pointer ${formData.role === role
-                                                ? 'bg-[rgb(var(--accent))] text-white'
-                                                : 'bg-[rgb(var(--bg-subtle))] text-[rgb(var(--text))] border border-[rgb(var(--border))]'
+                                            ? 'bg-[rgb(var(--accent))] text-white'
+                                            : 'bg-[rgb(var(--bg-subtle))] text-[rgb(var(--text))] border border-[rgb(var(--border))]'
                                             }`}>
                                             {role.charAt(0).toUpperCase() + role.slice(1)}
                                         </div>

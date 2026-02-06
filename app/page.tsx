@@ -29,14 +29,14 @@ export default function Landing3Page() {
             className={`landing3 h-screen overflow-hidden bg-[rgb(var(--bg))] text-[rgb(var(--text))] antialiased ${cormorant.variable} ${montserrat.variable} selection:bg-[rgb(var(--accent))]/20 selection:text-[rgb(var(--text))]`}
             style={{ fontFamily: 'var(--font-montserrat), system-ui, sans-serif' }}
         >
-            {/* Single viewport - no scrolling */}
-            <section className="relative h-screen overflow-hidden">
+            {/* Single viewport - scrollable on mobile if content exceeds */}
+            <section className="relative min-h-screen overflow-y-auto overflow-x-hidden">
                 {/* IntroVideo: plays on load, then becomes static background */}
                 <IntroVideo onReady={() => setReady(true)} />
 
                 {/* Hero content: fades in when intro is ready */}
                 <div
-                    className={`relative z-10 h-screen flex flex-col transition-opacity duration-500 ${ready ? "opacity-100" : "opacity-0 pointer-events-none"
+                    className={`relative z-10 min-h-screen flex flex-col transition-opacity duration-500 ${ready ? "opacity-100" : "opacity-0 pointer-events-none"
                         }`}
                 >
                     <Enter>
