@@ -1,0 +1,621 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Really Haute Brand Colors */
+  --color-onyx: #0C0C0C;
+  --color-ivory: #FAF9F7;
+  --color-gold: #B08D57;
+  --color-wine: #4A1F2C;
+
+  /* Runway Editorial Palette */
+  --color-slate: #1A1D24;
+  --color-slate-light: #252A33;
+  --color-slate-dark: #12141A;
+  --color-copper: #C4873D;
+  --color-copper-light: #D4A066;
+  --color-copper-dark: #A66B2A;
+  --color-teal: #1E6B7B;
+  --color-teal-light: #2D8B98;
+  --color-cream: #F5F0E8;
+  --color-bronze: #8B5A2B;
+  --color-wine-deep: #6B2D3A;
+
+  /* Extended palette */
+  --color-gold-light: #D4B896;
+  --color-gold-dark: #8B6914;
+  --color-warm-gray: #44403C;
+
+  /* Semantic colors */
+  --color-background: var(--color-slate);
+  --color-foreground: var(--color-cream);
+  --color-accent: var(--color-copper);
+
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Premium Shadows */
+  --shadow-soft: 0 2px 20px rgba(0, 0, 0, 0.03);
+  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.06);
+  --shadow-strong: 0 16px 50px rgba(0, 0, 0, 0.1);
+  --shadow-gold: 0 4px 30px rgba(176, 141, 87, 0.15);
+  --shadow-floating: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+
+  /* Glass effects */
+  --glass-bg: rgba(250, 249, 247, 0.7);
+  --glass-border: rgba(176, 141, 87, 0.15);
+  --glass-blur: 20px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    background-color: var(--color-slate);
+    color: var(--color-cream);
+  }
+
+  /* Landing2 specific dark theme */
+  .landing2-theme {
+    background-color: var(--color-slate);
+    color: var(--color-cream);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(196, 135, 61, 0.08), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(30, 107, 123, 0.06), transparent),
+      radial-gradient(ellipse 40% 30% at 0% 50%, rgba(107, 45, 58, 0.05), transparent);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif font-medium;
+    text-wrap: balance;
+  }
+
+  /* Premium focus states */
+  :focus-visible {
+    @apply outline-none ring-2 ring-gold/50 ring-offset-2 ring-offset-ivory;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  /* Smooth scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-ivory);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-gold);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-dark);
+  }
+}
+
+@layer components {
+
+  /* ========================================
+     PRIMARY BUTTON - Premium Gold
+     ======================================== */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center px-8 py-4 font-sans font-semibold text-sm tracking-wide uppercase cursor-pointer overflow-hidden;
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+    color: var(--color-ivory);
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-gold);
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 400ms ease;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 40px rgba(176, 141, 87, 0.3);
+  }
+
+  .btn-primary:hover::before {
+    opacity: 1;
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  /* ========================================
+     SECONDARY BUTTON - Elegant Outline
+     ======================================== */
+  .btn-secondary {
+    @apply relative inline-flex items-center justify-center px-8 py-4 font-sans font-semibold text-sm tracking-wide uppercase cursor-pointer overflow-hidden;
+    background: transparent;
+    color: var(--color-onyx);
+    border: 1.5px solid var(--color-onyx);
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-secondary::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: var(--color-onyx);
+    transition: height 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+  }
+
+  .btn-secondary:hover {
+    color: var(--color-ivory);
+    border-color: var(--color-onyx);
+  }
+
+  .btn-secondary:hover::after {
+    height: 100%;
+  }
+
+  /* ========================================
+     GLASS CARD - Liquid Glass Effect
+     ======================================== */
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    background: rgba(250, 249, 247, 0.85);
+    border-color: rgba(176, 141, 87, 0.3);
+    box-shadow: var(--shadow-floating);
+    transform: translateY(-4px);
+  }
+
+  /* ========================================
+     INPUT - Premium Form Fields
+     ======================================== */
+  .input {
+    @apply w-full px-5 py-4 bg-white/80 border font-sans text-base;
+    border-color: rgba(12, 12, 12, 0.08);
+    border-radius: 4px;
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+  }
+
+  .input:focus {
+    @apply outline-none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 4px rgba(176, 141, 87, 0.1), var(--shadow-soft);
+  }
+
+  .input::placeholder {
+    color: rgba(12, 12, 12, 0.35);
+  }
+
+  /* ========================================
+     SECTION CONTAINER
+     ======================================== */
+  .section {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+
+  .container-narrow {
+    @apply max-w-container mx-auto px-6 sm:px-8 lg:px-12;
+  }
+
+  /* ========================================
+     GOLD DIVIDER - Editorial Accent
+     ======================================== */
+  .divider {
+    @apply w-16 h-0.5 mx-auto my-10;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  }
+
+  /* ========================================
+     BADGE - Premium Label
+     ======================================== */
+  .badge {
+    @apply inline-flex items-center px-4 py-1.5 text-xs font-sans font-medium uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gold);
+    background: rgba(176, 141, 87, 0.08);
+    border: 1px solid rgba(176, 141, 87, 0.2);
+    border-radius: 100px;
+  }
+
+  /* ========================================
+     PREMIUM CARD HOVER
+     ======================================== */
+  .card-premium {
+    @apply relative overflow-hidden;
+    transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-premium::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(176, 141, 87, 0.1) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 500ms ease;
+    pointer-events: none;
+  }
+
+  .card-premium:hover::before {
+    opacity: 1;
+  }
+
+  .card-premium:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-floating);
+  }
+}
+
+@layer utilities {
+
+  /* Text balance for better typography */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* ========================================
+     PREMIUM ANIMATIONS
+     ======================================== */
+
+  /* Fade In */
+  .animate-fade-in {
+    animation: fadeIn 800ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+  }
+
+  /* Slide Up with Fade */
+  .animate-slide-up {
+    animation: slideUp 800ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+  }
+
+  /* Float animation for decorative elements */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Shimmer effect */
+  .animate-shimmer {
+    animation: shimmer 3s linear infinite;
+    background: linear-gradient(90deg, transparent, rgba(176, 141, 87, 0.1), transparent);
+    background-size: 200% 100%;
+  }
+
+  /* Glow pulse */
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite;
+  }
+
+  /* Scale In - for success states */
+  .animate-scale-in {
+    animation: scaleIn 500ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  /* Ping slow - softer ping effect */
+  .animate-ping-slow {
+    animation: pingSlow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  /* Scroll line indicator */
+  .animate-scroll-line {
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  /* Stagger delays */
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .delay-600 {
+    animation-delay: 600ms;
+  }
+
+  /* Gold gradient text */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 50%, var(--color-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Iridescent border */
+  .border-iridescent {
+    border-image: linear-gradient(135deg, var(--color-gold), var(--color-wine), var(--color-gold)) 1;
+  }
+}
+
+/* ========================================
+   KEYFRAME ANIMATIONS
+   ======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(176, 141, 87, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(176, 141, 87, 0.4);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pingSlow {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  75%,
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes scrollLine {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+/* ========================================
+   PREMIUM DECORATIVE ELEMENTS
+   ======================================== */
+
+/* Gradient orb backgrounds */
+.orb-gold {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(176, 141, 87, 0.15) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.orb-wine {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(74, 31, 44, 0.1) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  z-index: 9999;
+}
+
+/* ========================================
+   LANDING 3 TOKENS (Scoped) - Luxury Soft
+   ======================================== */
+.landing3 {
+  /* Warm ivory base - easier on eyes than pure white */
+  --bg: 250 249 247;
+  --bg-subtle: 245 243 240;
+
+  /* Warm text tones instead of pure black */
+  --text: 28 25 23;
+  --muted: 120 113 108;
+
+  /* Soft borders with warm undertone */
+  --border: 235 230 225;
+  --border-soft: 240 238 235;
+
+  /* Card with subtle warmth */
+  --card: 255 254 252;
+  --card-elevated: 255 255 255;
+
+  /* Premium gold accent (from design system) */
+  --accent: 176 141 87;
+  --accent-dark: 139 105 51;
+  --accent-light: 212 184 150;
+
+  /* Deep wine for contrast elements */
+  --accent2: 74 31 44;
+
+  /* Generous radius for luxury feel */
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-lg: 28px;
+
+  /* Premium shadows */
+  --shadow-soft: 0 2px 20px rgba(28, 25, 23, 0.04);
+  --shadow-medium: 0 8px 30px rgba(28, 25, 23, 0.06);
+  --shadow-card: 0 4px 24px rgba(28, 25, 23, 0.05);
+  --shadow-elevated: 0 12px 40px rgba(28, 25, 23, 0.08);
+}
+
+/* ========================================
+   LANDING 4 TOKENS (Scoped) - Liquid Glass Minimal
+   ======================================== */
+.landing4 {
+  /* Stone palette - clean luxury */
+  --bg: 250 250 249;
+  /* stone-50 */
+  --bg-glass: 255 255 255 / 0.7;
+  /* white with transparency */
+
+  /* Rich text tones */
+  --text: 12 10 9;
+  /* stone-950 */
+  --text-muted: 87 83 78;
+  /* stone-500 */
+
+  /* Subtle borders for glass effect */
+  --border: 231 229 228;
+  /* stone-200 */
+  --border-glass: 176 141 87 / 0.15;
+  /* gold with transparency */
+
+  /* Card backgrounds */
+  --card: 255 255 255;
+  --card-glass: 255 255 255 / 0.8;
+
+  /* Gold CTA accent */
+  --accent: 202 138 4;
+  /* yellow-600 gold */
+  --accent-dark: 161 98 7;
+  /* yellow-700 */
+  --accent-light: 234 179 8;
+  /* yellow-500 */
+
+  /* Stone accents */
+  --stone-900: 28 25 23;
+  --stone-700: 68 64 60;
+
+  /* Minimal radius */
+  --radius: 16px;
+  --radius-sm: 8px;
+  --radius-lg: 24px;
+
+  /* Liquid glass blur */
+  --glass-blur: 20px;
+
+  /* Soft shadows for floating elements */
+  --shadow-soft: 0 2px 20px rgba(12, 10, 9, 0.03);
+  --shadow-float: 0 25px 50px -12px rgba(12, 10, 9, 0.15);
+  --shadow-gold: 0 4px 30px rgba(202, 138, 4, 0.15);
+}

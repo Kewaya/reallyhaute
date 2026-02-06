@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0C0C0C"/>
+  
+  <!-- Subtle texture pattern -->
+  <defs>
+    <pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100">
+      <circle cx="50" cy="50" r="0.5" fill="#FAF9F7" opacity="0.03"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grain)"/>
+  
+  <!-- Gold accent line top -->
+  <rect x="450" y="180" width="300" height="1" fill="#B08D57" opacity="0.6"/>
+  
+  <!-- Brand Name -->
+  <text x="600" y="300" text-anchor="middle" font-family="Georgia, Playfair Display, serif" font-size="72" font-weight="500" fill="#FAF9F7">Really Haute</text>
+  
+  <!-- Tagline -->
+  <text x="600" y="370" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#FAF9F7" opacity="0.7">The Nigerian Luxury Archive</text>
+  
+  <!-- Gold accent line bottom -->
+  <rect x="450" y="420" width="300" height="1" fill="#B08D57" opacity="0.6"/>
+  
+  <!-- Decorative corners -->
+  <path d="M50 50 L100 50 L50 100 Z" fill="#B08D57" opacity="0.2"/>
+  <path d="M1150 50 L1100 50 L1150 100 Z" fill="#B08D57" opacity="0.2"/>
+  <path d="M50 580 L100 580 L50 530 Z" fill="#B08D57" opacity="0.2"/>
+  <path d="M1150 580 L1100 580 L1150 530 Z" fill="#B08D57" opacity="0.2"/>
+</svg>
