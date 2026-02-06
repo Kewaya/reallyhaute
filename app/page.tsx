@@ -1,49 +1,54 @@
-'use client'
+"use client";
+import { useState } from "react";
+import { Cormorant, Montserrat } from "next/font/google";
+import IntroVideo from "@/components/landing3/IntroVideo";
+import Enter from "@/components/landing3/Enter";
+import Header from "@/components/landing3/Header";
+import Hero from "@/components/landing3/Hero";
 
-import { useState } from 'react'
-import Header from '@/components/Header'
-import Hero from '@/components/Hero'
-import WaitlistModal from '@/components/WaitlistModal'
-import HowItWorks from '@/components/HowItWorks'
-import Categories from '@/components/Categories'
-import WhyReallyHaute from '@/components/WhyReallyHaute'
-import ComingSoon from '@/components/ComingSoon'
-import FAQ from '@/components/FAQ'
-import Footer from '@/components/Footer'
+// Premium luxury font pairing
+const cormorant = Cormorant({
+    subsets: ["latin"],
+    variable: "--font-cormorant",
+    display: "swap",
+    weight: ["400", "500", "600", "700"],
+});
 
-export default function Home() {
-    const [isWaitlistOpen, setIsWaitlistOpen] = useState(false)
-    const [waitlistRole, setWaitlistRole] = useState<'buyer' | 'seller'>('buyer')
+const montserrat = Montserrat({
+    subsets: ["latin"],
+    variable: "--font-montserrat",
+    display: "swap",
+    weight: ["300", "400", "500", "600"],
+});
 
-    const openWaitlist = (role?: 'buyer' | 'seller') => {
-        if (role) setWaitlistRole(role)
-        setIsWaitlistOpen(true)
-    }
-
-    const closeWaitlist = () => {
-        setIsWaitlistOpen(false)
-    }
+export default function Landing3Page() {
+    const [ready, setReady] = useState(false);
 
     return (
-        <>
-            <Header onOpenWaitlist={openWaitlist} />
+        <div
+            className={`landing3 h-screen overflow-hidden bg-[rgb(var(--bg))] text-[rgb(var(--text))] antialiased ${cormorant.variable} ${montserrat.variable} selection:bg-[rgb(var(--accent))]/20 selection:text-[rgb(var(--text))]`}
+            style={{ fontFamily: 'var(--font-montserrat), system-ui, sans-serif' }}
+        >
+            {/* Single viewport - no scrolling */}
+            <section className="relative h-screen overflow-hidden">
+                {/* IntroVideo: plays on load, then becomes static background */}
+                <IntroVideo onReady={() => setReady(true)} />
 
-            <main>
-                <Hero onOpenWaitlist={openWaitlist} />
-                <HowItWorks />
-                <Categories onOpenWaitlist={() => openWaitlist()} />
-                <WhyReallyHaute />
-                <ComingSoon />
-                <FAQ />
-            </main>
-
-            <Footer onOpenWaitlist={() => openWaitlist()} />
-
-            <WaitlistModal
-                isOpen={isWaitlistOpen}
-                onClose={closeWaitlist}
-                initialRole={waitlistRole}
-            />
-        </>
-    )
+                {/* Hero content: fades in when intro is ready */}
+                <div
+                    className={`relative z-10 h-screen flex flex-col transition-opacity duration-500 ${ready ? "opacity-100" : "opacity-0 pointer-events-none"
+                        }`}
+                >
+                    <Enter>
+                        <div className="max-w-6xl mx-auto px-6 flex-1 flex flex-col">
+                            <Header />
+                            <div className="flex-1 flex items-center">
+                                <Hero />
+                            </div>
+                        </div>
+                    </Enter>
+                </div>
+            </section>
+        </div>
+    );
 }
